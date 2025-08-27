@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>uRseed Coffee</title>
+  <meta name="description" content="Premium International Coffee Exporter from Ethiopia, Colombia, Kenya, and Brazil to buyers worldwide." />
+  <meta name="keywords" content="coffee, exporter, Ethiopia, Colombia, Kenya, Brazil, bulk coffee, single-origin coffee, premium coffee" />
+  <meta name="author" content="Pro Coffee Shop" />
+  <link rel="stylesheet" href="thank-you.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="urseed.c.png" />
+  <!-- PayPal SDK -->
+  <script src="https://www.paypal.com/sdk/js?client-id=ASc7cZgKQZN81ZQhGkHluCB_l9-vc0X1HKbIhh7SaaIKuvORFYwhCXJH121sqYqK76po4lRZb4IunI5V&currency=GBP&components=buttons,funding-eligibility"></script>
+</head>
+<body>
+  <header>
+    <h1 onclick="window.scrollTo({top:0,behavior:'smooth'})"> uRseed</h1> 
+    <nav class="desktop" aria-label="Main navigation">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#single">Single</a>
+      <a href="#bulk">Bulk</a>
+      <a href="#ourcoffee">Our Coffee</a>
+      <a href="#privacy">Privacy</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="menu-toggle" title="Open menu" onclick="toggleMenu()" aria-hidden="false">☰</div>
+  </header>
+
+  <aside class="side-menu" id="sideMenu" aria-hidden="true" aria-label="Side menu">
+    <div class="close-btn" onclick="toggleMenu()" aria-hidden="false">×</div>
+    <nav>
+      <a href="#home" onclick="toggleMenu()"><i class="fa fa-house"></i> Home</a>
+      <a href="#about" onclick="toggleMenu()"><i class="fa fa-users"></i> About Us</a>
+      <a href="#single" onclick="toggleMenu()"><i class="fa fa-mug-hot"></i> Single Coffee</a>
+      <a href="#bulk" onclick="toggleMenu()"><i class="fa fa-boxes-stacked"></i> Bulk Coffee</a>
+      <a href="#ourcoffee" onclick="toggleMenu()"><i class="fa fa-seedling"></i> Our Coffee</a>
+      <a href="#privacy" onclick="toggleMenu()"><i class="fa fa-shield-halved"></i> Privacy Policy</a>
+      <a href="#cart" onclick="toggleCart(); toggleMenu()"><i class="fa fa-cart-shopping"></i> View Cart</a>
+      <a href="#contact" onclick="toggleMenu()"><i class="fa fa-envelope"></i> Contact</a>
+      <p>Follow us:
+        <a href="#"><i class="fab fa-facebook"></i> Facebook</a>
+        <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+        <a href="#"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
+        <a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="#"><i class="fab fa-tiktok"></i> TikTok</a>
+        <a href="#"><i class="fab fa-youtube"></i> YouTube</a>
+        <a href="#"><i class="fab fa-pinterest"></i> Pinterest</a>
+        <a href="#"><i class="fab fa-telegram"></i> Telegram</a>
+        
+        <a href="mailto:contact@procoffeeshop.com"><i class="fas fa-envelope"></i> Email</a>
+      </p>
+    </nav>
+  </aside>
+
+  <button class="cart-toggle" onclick="toggleCart()" aria-label="Open cart">
+    <span aria-hidden="true">🛒</span>
+    <span id="cart-count" aria-hidden="true">0</span>
+  </button>
+
+  <section class="hero" id="home" aria-label="Hero">
+    <div>
+      <h1>Premium International Coffee Exporter</h1>
+      <p>From Ethiopia, Colombia, Kenya, and Brazil to buyers worldwide.</p>
+      <button class="btn" onclick="location.href='#bulk'">Request a Bulk Order</button>
+    </div>
+  </section>
+
+  <!-- Products -->
+  <main>
+    <section id="single" class="container" aria-label="Single coffees">
+      <article class="card">
+        <img src="urseed.c.png" alt="Ethiopian Coffee">
+        <h3>Ethiopian Coffee</h3>
+        <p>£6 per pack</p>
+        <button class="btn" onclick="addToCart('Ethiopian Coffee',6)">Add to Cart</button>
+      </article>
+      <article class="card">
+        <img src="gutmala.webp" alt="Brazilian Coffee">
+        <h3>Brazilian Coffee</h3>
+        <p>£6 per pack</p>
+        <button class="btn" onclick="addToCart('Brazilian Coffee',6)">Add to Cart</button>
+      </article>
+      <article class="card">
+        <img src="urco.png" alt="Colombian Coffee">
+        <h3>Colombian Coffee</h3>
+        <p>£6 per pack</p>
+        <button class="btn" onclick="addToCart('Colombian Coffee',6)">Add to Cart</button>
+      </article>
+      <article class="card">
+        <img src="strobery.webp" alt="Kenyan Coffee">
+        <h3>Kenyan Coffee</h3>
+        <p>£6 per pack</p>
+        <button class="btn" onclick="addToCart('Kenyan Coffee',6)">Add to Cart</button>
+      </article>
+    </section>
+
+    <section id="bulk" class="container" aria-label="Bulk coffees">
+      <article class="card">
+        <img src="strobery.webp" alt="Kenyan Coffee">
+        <h3>Kenyan Coffee</h3>
+        <p>£30 per Kg</p>
+        <button class="btn" onclick="addToCart('Kenyan Coffee',30)">Add to Cart</button>
+      </article>
+      <article class="card">
+        <img src="colopiya.webp" alt="Colombian Bulk Coffee">
+        <h3>Colombian Bulk Coffee</h3>
+        <p>£30 per Kg</p>
+        <div style="margin-top:.5rem;display:flex;gap:.5rem;align-items:center;justify-content:center;">
+          <input type="number" id="colombianBulkQty" min="1" value="1" style="width:80px;padding:.4rem;border-radius:8px;border:1px solid #dddddd">
+          <button class="btn" onclick="addBulkToCart('Colombian Bulk Coffee',30,'colombianBulkQty')">Add</button>
+        </div>
+      </article>
+      <article class="card">
+        <img src="gutmala.webp" alt="Brazilian Bulk Coffee">
+        <h3>Brazilian Bulk Coffee</h3>
+        <p>£30 per Kg</p>
+        <div style="margin-top:.5rem;display:flex;gap:.5rem;align-items:center;justify-content:center;">
+          <input type="number" id="brazilianBulkQty" min="1" value="1" style="width:80px;padding:.4rem;border-radius:8px;border:1px solid #ddd">
+          <button class="btn" onclick="addBulkToCart('Brazilian Bulk Coffee',30,'brazilianBulkQty')">Add</button>
+        </div>
+      </article>
+      <article class="card">
+        <img src="melon.webp" alt="Ethiopian Bulk Coffee">
+        <h3>Ethiopian Bulk Coffee</h3>
+        <p>£30 per Kg</p>
+        <div style="margin-top:.5rem;display:flex;gap:.5rem;align-items:center;justify-content:center;">
+          <input type="number" id="ethiopianBulkQty" min="1" value="1" style="width:80px;padding:.4rem;border-radius:8px;border:1px solid #ddddddfd">
+          <button class="btn" onclick="addBulkToCart('Ethiopian Bulk Coffee',30,'ethiopianBulkQty')">Add</button>
+        </div>
+      </article>
+    </section>
+
+    <!-- About & Coffee Info -->
+    <section id="about" class="container" aria-label="About">
+      <article class="card">
+        <h3>About Us</h3>
+        <p>We are a leading exporter of premium international coffee, sourcing the finest beans from Ethiopia, Colombia, Kenya, and Brazil.</p>
+      </article>
+    </section>
+
+    <section id="ourcoffee" class="container" aria-label="Our coffee">
+      <article class="card">
+        <h3>Our Coffee</h3>
+        <p>Discover single-origin and expertly blended coffees designed for taste and traceability.</p>
+      </article>
+    </section>
+
+    <section id="privacy" class="container" aria-label="Privacy policy">
+      <article class="card">
+        <h3>Privacy Policy</h3>
+        <p>Your payment and personal data are treated securely. Payment processing handled by PayPal.</p>
+      </article>
+    </section>
+
+    <section id="contact" class="container" aria-label="Contact">
+      <article class="card">
+        <h3>Contact</h3>
+        <p>Email: <a href="mailto:contact@procoffeeshop.com">contact@procoffeeshop.com</a></p>
+        <p>Phone/WhatsApp: +44 7000 000000</p>
+      </article>
+    </section>
+  </main>
+
+  <!-- Cart -->
+  <aside id="cart" aria-label="Shopping cart">
+    <h2>Your Cart</h2>
+    <div id="cart-items" aria-live="polite" style="margin-bottom:.6rem"></div>
+
+    <div class="totals" aria-hidden="false">
+      <p><span>Subtotal</span><span id="cart-subtotal">£0.00</span></p>
+      <p><span>Shipping</span><span id="cart-shipping">£0.00</span></p>
+      <p><strong>Total</strong><strong id="cart-total">£0.00</strong></p>
+    </div>
+
+    <div style="text-align:center; margin-bottom:1rem;">
+      <button class="btn" style="background:#ffdd57; color:#075233;" onclick="toggleCart()">← Back to Shopping</button>
+    </div>
+
+    <form id="checkoutForm" class="checkout-form" action="https://formspree.io/f/xrbleeeg" method="POST" novalidate>                                                       
+      <label for="customerName">Full Name</label>
+      <input id="customerName" name="name" type="text" required>
+
+      <label for="customerEmail">Email</label>
+      <input id="customerEmail" name="email" type="email" required>
+
+      <label for="customerPhone">Phone</label>
+      <input id="customerPhone" name="phone" type="tel" required>
+
+      <label for="customerAddress">Delivery Address</label>
+      <textarea id="customerAddress" name="address" required></textarea>
+
+      <label for="customerCountry">Country</label>
+      <select id="customerCountry" name="country" required>
+        <option value="">Select Country</option>
+        <option value="UK">United Kingdom</option>
+        <option value="USA">USA</option>
+        <option value="Ethiopia">Ethiopia</option>
+        <option value="Colombia">Colombia</option>
+        <option value="Kenya">Kenya</option>
+        <option value="Brazil">Brazil</option>
+      </select>
+
+      <input type="hidden" name="orderDetails" id="orderDetails">
+      <input type="hidden" name="orderNumber" id="orderNumber">
+    </form>
+
+    <div id="paypal-button-container" style="min-width:200px; margin-top:10px;"></div>
+    <div id="postPaymentMessage" style="margin-top:1rem"></div>
+  </aside>
+
+<div style="max-width:720px; margin:3rem auto; padding:0 1rem; text-align:center;">
+  <img src="urseed.png" alt="urseed" style="display:block; max-width:420px; margin:9rem auto 5rem;">
+  <h2> Powered by uRxai </h2>
+  <p>We deliver your order using our AI-powered system, uRxai, ensuring efficient and timely coffee delivery.</p>
+  <p>Experience the convenience of AI-driven logistics with uRxai, designed to bring your favorite coffee right to your doorstep.</p>
+  <p>With uRxai, we optimize delivery routes and times, so you can enjoy your premium coffee without any hassle.</p>
+  <p>Trust uRxai to handle your coffee deliveries with precision and care, making your experience seamless from order to cup.</p>
+</div>
+  <footer>
+    <p>Follow us:
+      <a href="#"><i class="fab fa-facebook"></i> </a>
+      <a href="#"><i class="fab fa-instagram"></i> </a>
+      <a href="#"><i class="fab fa-whatsapp"></i> </a>
+      <a href="#"><i class="fab fa-twitter"></i> </a>
+      <a href="#"><i class="fab fa-linkedin"></i></a>
+      <a href="#"><i class="fab fa-tiktok"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+      <a href="#"><i class="fab fa-pinterest"></i></a>  
+      <a href="#"><i class="fab fa-telegram"></i></a>
+      <a href="mailto:eyobuk7@gmail.com"><i class="fas fa-envelope"></i></a>
+    </p>
+    <p style="margin-top:.5rem">© <span id="year"></span> uRseed Coffee Shop. All rights reserved.</p>
+    <p style="font-size:.8rem; color:#fdf4f4; margin-top:.5rem;">Website by Eyob uRseeed Coffee Shop</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    const sideMenu = document.getElementById('sideMenu');
+    function toggleMenu(){
+      const active = sideMenu.classList.toggle('active');
+      sideMenu.setAttribute('aria-hidden', (!active).toString());
+    }
+
+    let cart = [];
+    let orderCounter = 1000;
+
+    function el(tag, opts = {}, children = []) {
+      const node = document.createElement(tag);
+      for (const k in opts) {
+        if (k === 'class') node.className = opts[k];
+        else if (k === 'text') node.textContent = opts[k];
+        else node.setAttribute(k, opts[k]);
+      }
+      (Array.isArray(children) ? children : [children]).forEach(c => {
+        if (typeof c === 'string') node.appendChild(document.createTextNode(c));
+        else if (c) node.appendChild(c);
+      });
+      return node;
+    }
+
+    function addToCart(name, price){
+      const found = cart.find(i=>i.name===name);
+      if(found) found.qty++; else cart.push({name, price:Number(price), qty:1});
+      updateCart(); openCartBriefly();
+    }
+
+    function addBulkToCart(name, price, qtyId){
+      const qty = Math.max(0, parseInt(document.getElementById(qtyId).value || 0));
+      if(qty <= 0) return;
+      const found = cart.find(i=>i.name===name);
+      if(found) found.qty += qty; else cart.push({name, price:Number(price), qty});
+      document.getElementById(qtyId).value = 0;
+      updateCart(); openCartBriefly();
+    }
+
+    function removeFromCart(name){ cart = cart.filter(i=>i.name!==name); updateCart(); }
+
+    function fmt(v){ return Number(v).toFixed(2); }
+
+    function updateCart(){
+      const itemsDiv = document.getElementById('cart-items');
+      const countSpan = document.getElementById('cart-count');
+      itemsDiv.innerHTML='';
+
+      let subtotal=0;
+      cart.forEach(item=>{
+        const itemTotal = item.price*item.qty;
+        subtotal += itemTotal;
+
+        const qtyDiv = el('div',{class:'qty'},[
+          el('button',{type:'button',class:'dec',text:'-'}),
+          el('span',{text:item.qty}),
+          el('button',{type:'button',class:'inc',text:'+'})
+        ]);
+
+        qtyDiv.querySelector('.inc').addEventListener('click',()=>{item.qty++; updateCart();});
+        qtyDiv.querySelector('.dec').addEventListener('click',()=>{
+          item.qty--; if(item.qty<=0) removeFromCart(item.name); else updateCart();
+        });
+
+        const left = el('div',{class:'left'},[el('div',{text:item.name}), qtyDiv]);
+        const right = el('div',{},[el('div',{text:'£'+fmt(itemTotal)}), el('button',{class:'remove',title:'Remove'},['❌'])]);
+        const wrapper = el('div',{class:'cart-item'},[left,right]);
+        wrapper.querySelector('button.remove').addEventListener('click',()=>removeFromCart(item.name));
+        itemsDiv.appendChild(wrapper);
+      });
+
+      const shipping = subtotal>50?0:(subtotal===0?0:5);
+      const total = subtotal+shipping;
+      document.getElementById('cart-subtotal').textContent='£'+fmt(subtotal);
+      document.getElementById('cart-shipping').textContent='£'+fmt(shipping);
+      document.getElementById('cart-total').textContent='£'+fmt(total);
+
+      const totalQty = cart.reduce((s,i)=>s+i.qty,0);
+      if(totalQty>0){ countSpan.style.display='inline-block'; countSpan.textContent=totalQty;}
+      else countSpan.style.display='none';
+
+      const country=document.getElementById('customerCountry')?.value || '';
+      document.getElementById('orderDetails').value = cart.map(c=>`${c.name} x${c.qty} (£${fmt(c.price*c.qty)})`).join(' | ');
+      if(country) document.getElementById('orderDetails').value += ` | Country: ${country}`;
+      document.getElementById('orderNumber').value='ORD-'+(orderCounter+1);
+
+      renderPayPal(total);
+    }
+
+    function openCartBriefly(){document.getElementById('cart').classList.add('open');}
+    function toggleCart(){document.getElementById('cart').classList.toggle('open');updateCart(); closeMenuIfOpen();}
+    function closeMenuIfOpen(){ if(sideMenu.classList.contains('active')) toggleMenu(); }
+
+    function validateCheckoutForm(showAlert=true){
+      const name=document.getElementById('customerName').value.trim();
+      const email=document.getElementById('customerEmail').value.trim();
+      const phone=document.getElementById('customerPhone').value.trim();
+      const address=document.getElementById('customerAddress').value.trim();
+      const country=document.getElementById('customerCountry').value.trim();
+      if(!name||!email||!phone||!address||!country){ if(showAlert) alert('Please fill all contact fields'); return false; }
+      const emailPattern=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if(!emailPattern.test(email)){ if(showAlert) alert('Invalid email'); return false;}
+      return true;
+    }
+
+    function renderPayPal(total){
+      const container=document.getElementById('paypal-button-container');
+      const post=document.getElementById('postPaymentMessage');
+      post.innerHTML=''; container.innerHTML='';
+      if(!cart.length){ container.appendChild(el('div',{text:'Add items to your cart to see PayPal.'})); return;}
+
+      paypal.Buttons({
+        style:{color:'gold',shape:'rect',label:'pay'},
+        onClick:function(data,actions){ if(!validateCheckoutForm(true)) return actions.reject(); return actions.resolve(); },
+        createOrder:function(data,actions){
+          return actions.order.create({purchase_units:[{amount:{value:fmt(total)},description:cart.map(c=>c.name+' x'+c.qty).join(', ')}]});
+        },
+        onApprove:function(data,actions){
+          return actions.order.capture().then(function(details){
+            orderCounter++;
+            post.appendChild(el('div',{class:'success-message',text:`✅ Payment completed by ${details.payer.name?.given_name||'Customer'}. Order: ORD-${orderCounter}`}));
+
+            document.getElementById('orderNumber').value='ORD-'+orderCounter;
+            document.getElementById('orderDetails').value+=` | Paid via PayPal (Order ID ${data.orderID})`;
+
+            const form=document.getElementById('checkoutForm');
+            if(validateCheckoutForm(false)){
+              const formData=new FormData(form);
+              formData.append('paypalOrderId',data.orderID);
+              formData.append('paypalPayerID',data.payerID||'');
+              formData.append('paypalPayerName',details.payer.name?.given_name||'');
+              fetch(form.action,{method:'POST',body:formData})
+                .then(resp=>{post.appendChild(el('div',{text:'📧 Order details submitted.'}));})
+                .catch(err=>{post.appendChild(el('div',{text:'⚠️ Could not submit order details.'})); console.error(err);});
+            }
+            cart=[]; updateCart();
+          });
+        },
+        onCancel:function(data){ post.innerHTML=''; post.appendChild(el('div',{text:'Payment cancelled.'})); },
+        onError:function(err){ console.error(err); post.innerHTML=''; post.appendChild(el('div',{class:'success-message',text:'❌ Payment failed.'})); }
+      }).render('#paypal-button-container');
+    }
+
+    document.getElementById('year').textContent=new Date().getFullYear();
+    ['customerName','customerEmail','customerPhone','customerAddress','customerCountry'].forEach(id=>{
+      const elField=document.getElementById(id);
+      if(elField) elField.addEventListener('input',()=>{updateCart();});
+    });
+
+    document.getElementById('checkoutForm').addEventListener('submit',function(e){ e.preventDefault(); if(!validateCheckoutForm()) return; });
+
+    window.addEventListener('keydown',(e)=>{ if(e.key==='Escape'){ if(sideMenu.classList.contains('active')) toggleMenu(); const cartEl=document.getElementById('cart'); if(cartEl.classList.contains('open')) cartEl.classList.remove('open'); } });
+
+    updateCart();
+  </script>
+</body>
+</html>
+
+
